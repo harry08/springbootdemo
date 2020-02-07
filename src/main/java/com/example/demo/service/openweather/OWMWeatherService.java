@@ -13,8 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 /**
+ * Implementation of WeatherService.
+ * Runs in prod profile. Configured in WeatherServiceConfig.
+ *
  * Connects to the OpenWeatherMap current weather Data service
  * See https://openweathermap.org/current
+ *
+ * The developer key is read from appliction.properties
  */
 public class OWMWeatherService implements WeatherService {
 
