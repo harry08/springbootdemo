@@ -2,7 +2,12 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Weather;
 
-public interface WeatherService {
+import java.util.Optional;
 
-    public Weather getCurrentTemperature();
+public interface WeatherService {
+    
+    /**
+     * Gets the current temperature for the specified city and country
+     */
+    public Weather getCurrentTemperature(String city, Optional<String> country);
 }

@@ -11,4 +11,6 @@ public class Weather {
     private Double temperature;
     private TemperatureScale temperatureScale;
     private int humidity;
+
+    private String city;
 }

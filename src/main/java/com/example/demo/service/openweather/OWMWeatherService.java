@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Optional;
+
 /**
  * Implementation of WeatherService.
  * Runs in prod profile. Configured in WeatherServiceConfig.
@@ -42,11 +44,11 @@ public class OWMWeatherService implements WeatherService {
     }
 
     @Override
-    public Weather getCurrentTemperature() {
-        logger.info("getCurrentTemperature called...");
+    public Weather getCurrentTemperature(String city, Optional<String> country) {
+        logger.info("getCurrentTemperature called for city " + city + "," + country.orElse("country not specified")  + "...");
         counter.increment();
-        
-        String url = getUrl("London", "uk");
+
+        String url = getUrl(city, country);
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -59,13 +61,18 @@ public class OWMWeatherService implements WeatherService {
         Double tempKelvin = weatherMapData.getMain().getTemp();
         weather.setTemperature(convertKelvinToCelsius(tempKelvin));
         weather.setHumidity(weatherMapData.getMain().getHumidity());
+        weather.setCity(weatherMapData.getName());
 
         return weather;
     }
 
-    private String getUrl(String city, String country) {
+    private String getUrl(String city, Optional<String> country) {
         StringBuilder str = new StringBuilder(BASE_URL);
-        str.append("?q=" + city + "," + country);
+        if (country.isPresent()) {
+            str.append("?q=" + city + "," + country);
+        } else {
+            str.append("?q=" + city);
+        }
         str.append("&appid=" + owmAppId);
         str.append("&lang=de");
 

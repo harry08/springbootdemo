@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Mock implementation of WeatherService.
  * Returns static values.
@@ -18,12 +20,13 @@ public class MockWeatherService implements WeatherService {
     Logger logger = LoggerFactory.getLogger(MockWeatherService.class);
     
     @Override
-    public Weather getCurrentTemperature() {
-        logger.info("getCurrentTemperature called...");
+    public Weather getCurrentTemperature(String city, Optional<String> country) {
+        logger.info("getCurrentTemperature called for city " + city + "," + country.orElse("country not specified") + "...");
         Weather weather = new Weather();
         weather.setTemperatureScale(TemperatureScale.CELSIUS);
         weather.setTemperature(37D);
         weather.setHumidity(75);
+        weather.setCity(city);
 
         return weather;
     }

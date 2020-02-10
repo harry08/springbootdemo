@@ -17,6 +17,12 @@ public class WeatherMapData {
      * City name
      */
     private String name;
+
+    /**
+     * City id
+     */
+    private int id;
+    
     /**
      * Time of data calculation, Unix, UTC
      */
