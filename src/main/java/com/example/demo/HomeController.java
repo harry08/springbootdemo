@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+/**
+ * Simple Controller that returns the index.html when the home path is called.
+ */
 @Controller
 public class HomeController {
 

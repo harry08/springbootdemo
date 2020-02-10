@@ -64,7 +64,12 @@ public class OWMWeatherService implements WeatherService {
     }
 
     private String getUrl(String city, String country) {
-        return BASE_URL + "?q=" + city + "," + country + "&appid=" + owmAppId + "&lang=de";
+        StringBuilder str = new StringBuilder(BASE_URL);
+        str.append("?q=" + city + "," + country);
+        str.append("&appid=" + owmAppId);
+        str.append("&lang=de");
+
+        return str.toString();
     }
 
     private Double convertKelvinToFahrenheit(Double kelvin) {
