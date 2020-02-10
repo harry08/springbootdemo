@@ -17,11 +17,25 @@ In the project directory call
 `java -jar -Dspring.profiles.active=prod target/demo.jar` 
   
 ## REST endpoints
+
+### Temperature
                                                                           
-* Read the current temperature for the default city: http://localhost:8080/temperature
+* Read the current temperature for the default city: `http://localhost:8080/temperature` 
 The default city is specified in application.properties
-* Read the current temperature for the specified city and country: http://localhost:8080/temperatur?q=Basel,ch
-* Provides an info page about this application via HomeController: http://localhost:8080/
+* Read the current temperature for the specified city and country: `http://localhost:8080/temperatur?q=Basel,ch`
+
+### Actuator
+
+* Shows a list of all Actuator endpoints: `http://localhost:8080/actuator`
+* Shows a counter for all http requests: `http://localhost:8080/actuator/metrics/http.server.requests`
+* Shows the infos of a custom metric: `http://localhost:8080/actuator/metrics/getcurrenttemperature.count`
+* Shows application information: `http://localhost:8080/actuator/info`
+
+
+
+### General
+
+* Provides an info page about this application via HomeController: `http://localhost:8080/`
 
 ## OpenWeatherMap
 
