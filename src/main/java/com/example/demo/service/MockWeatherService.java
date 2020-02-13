@@ -22,12 +22,6 @@ public class MockWeatherService implements WeatherService {
     @Override
     public Weather getCurrentTemperature(String city, Optional<String> country) {
         logger.info("getCurrentTemperature called for city " + city + "," + country.orElse("country not specified") + "...");
-        Weather weather = new Weather();
-        weather.setTemperatureScale(TemperatureScale.CELSIUS);
-        weather.setTemperature(37D);
-        weather.setHumidity(75);
-        weather.setCity(city);
-
-        return weather;
+        return new Weather(37D, TemperatureScale.CELSIUS, 75, city);
     }
 }
