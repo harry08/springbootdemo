@@ -22,7 +22,8 @@ In the project directory call
                                                                           
 * Read the current temperature for the default city: `http://localhost:8080/temperature` 
 The default city is specified in application.properties
-* Read the current temperature for the specified city and country: `http://localhost:8080/temperatur?q=Basel,ch`
+* Read the current temperature for the specified city and country: `http://localhost:8080/temperatur?city=Basel&country=ch`
+* Read the current temperature for the specified city without country: `http://localhost:8080/temperatur?city=London`
 
 ### Actuator
 
