@@ -1,6 +1,11 @@
 # Spring Boot REST Service Demo application
 
-Provides a service to get the current temperature.
+Provides a service to get the current temperature for a specific location.
+The temperature is read from an external service.
+
+The applicatiion can be executed in 2 modes:
+* Prod mode - The external service is called to read the temperature.
+* Mock mode - The external service is mocked
 
 ## Run the application
 
@@ -32,8 +37,6 @@ The default city is specified in application.properties
 * Shows the infos of a custom metric: `http://localhost:8080/actuator/metrics/getcurrenttemperature.count`
 * Shows application information: `http://localhost:8080/actuator/info`
 
-
-
 ### General
 
 * Provides an info page about this application via HomeController: `http://localhost:8080/`
@@ -46,3 +49,7 @@ To access OpenWeatherMap an AppId is required.
 Can be received via https://openweathermap.org/appid.
 
 The AppId needs to be configured in application.properties with the key `integration.owm.appid` 
+
+## Spring Initializer
+The basic maven project is created with Spring initializer.
+See start.spring.io
