@@ -52,4 +52,4 @@ The AppId needs to be configured in application.properties with the key `integra
 
 ## Spring Initializer
 The basic maven project is created with Spring initializer.
-See start.spring.io
+See https://start.spring.io
